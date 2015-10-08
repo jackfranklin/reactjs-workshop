@@ -21,7 +21,7 @@ class HelloWorld extends React.Component {
   }
 };
 
-React.render(
+ReactDOM.render(
   <HelloWorld />,
-  document.body
+  document.getElementById('app')
 );

@@ -69,7 +69,7 @@ class Todos extends React.Component {
   }
 }
 
-React.render(
+ReactDOM.render(
   <MyApp />,
-  document.body
+  document.getElementById('app')
 );

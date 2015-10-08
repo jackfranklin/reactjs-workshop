@@ -30,7 +30,7 @@ class Counter extends React.Component {
   }
 }
 
-React.render(
+ReactDOM.render(
   <MyApp />,
-  document.body
+  document.getElementById('app')
 );

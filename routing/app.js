@@ -22,10 +22,10 @@ class About extends React.Component {
   }
 }
 
-React.render((
+ReactDOM.render((
   <Router>
     <Route path="/" component={App}>
       <Route path="about" component={About} />
     </Route>
   </Router>
-), document.body);
+), document.getElementById('app'));

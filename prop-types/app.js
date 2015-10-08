@@ -28,7 +28,7 @@ Person.defaultProps = {
   location: "London",
 }
 
-React.render(
+ReactDOM.render(
   <MyApp />,
-  document.body
+  document.getElementById('app')
 );

@@ -4,7 +4,7 @@ var HelloWorld = React.createClass({
   }
 });
 
-React.render(
+ReactDOM.render(
   <HelloWorld />,
-  document.body
+  document.getElementById('app')
 );
