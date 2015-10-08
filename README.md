@@ -9,6 +9,7 @@ These are various code samples and notes for a 3 hour workshop introducing React
 - [React Router](https://github.com/rackt/react-router)
 - [Reusable Components](https://facebook.github.io/react/docs/reusable-components.html)
 - [React 0.14 released](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html)
+- [Redux](http://rackt.github.io/redux/)
 
 ## Watching
 
