@@ -4,8 +4,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/about">About Me</Link>
+        <Link activeClassName="active" to="/">Home</Link>
+        <Link activeClassName="active" to="/about">About Me</Link>
+        <Link activeClassName="active" to="/repos/jackfranklin">Jack's hard work</Link>
+        <Link activeClassName="active" to="/repos/onishiweb">Adam's Lazy work</Link>
         <p>This is my app</p>
         <hr />
         {this.props.children}
@@ -13,6 +15,7 @@ class App extends React.Component {
     );
   }
 }
+
 
 class About extends React.Component {
   render() {
@@ -22,10 +25,55 @@ class About extends React.Component {
   }
 }
 
+class Home extends React.Component {
+  render() {
+    return (
+      <p>Home</p>
+    );
+  }
+}
+
+class Repos extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { repos: [] };
+  }
+
+  fetchData(username) {
+    fetch(`https://api.github.com/users/${username}/repos`).then(r => r.json()).then((data) => {
+      this.setState({ repos: data });
+    });
+  }
+
+  componentWillMount() {
+    this.fetchData(this.props.params.username);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.params.username !== this.props.params.username) {
+      this.fetchData(nextProps.params.username);
+    }
+  }
+
+  render() {
+    const repos = this.state.repos.map((repo) => {
+      return <li key={repo.name}>{repo.name}</li>;
+    });
+
+    return (
+      <div>
+        <ul>{repos}</ul>
+      </div>
+    )
+  }
+}
+
 ReactDOM.render((
   <Router>
-    <Route path="/" component={App}>
-      <Route path="about" component={About} />
+    <Route path="" component={App}>
+      <Route path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/repos/:username" component={Repos} />
     </Route>
   </Router>
 ), document.getElementById('app'));
