@@ -1,6 +1,10 @@
 const { Router, Route, Link } = ReactRouter;
 
 class App extends React.Component {
+  userGo() {
+    this.props.history.pushState(null, `/repos/${this.refs.userInput.value}`);
+  }
+
   render() {
     return (
       <div>
@@ -9,6 +13,8 @@ class App extends React.Component {
         <Link activeClassName="active" to="/repos/jackfranklin">Jack's hard work</Link>
         <Link activeClassName="active" to="/repos/onishiweb">Adam's Lazy work</Link>
         <p>This is my app</p>
+        <input type='text' ref='userInput' />
+        <button onClick={(e) => this.userGo()}>Go</button>
         <hr />
         {this.props.children}
       </div>
@@ -26,9 +32,12 @@ class About extends React.Component {
 }
 
 class Home extends React.Component {
+
   render() {
     return (
-      <p>Home</p>
+      <div>
+        <p>Home</p>
+      </div>
     );
   }
 }
